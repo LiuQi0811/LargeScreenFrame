@@ -12,4 +12,8 @@ async function initApp(){
 }
 
 // 初始化 app
-initApp()
+initApp().then(()=>{
+   window.addEventListener("unkown",event=>{
+         console.warn(`Message ${event}`);
+   })
+})
