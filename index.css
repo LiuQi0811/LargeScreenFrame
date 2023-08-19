@@ -1,3 +1,16 @@
-*{
+* {
     margin: 0;
+}
+
+.first-loading-wrp {
+    /*设置元素的内部显示类型 flex*/
+    display: flex;
+    /*justify-content 属性定义了浏览器之间，如何分配顺着弹性容器主轴(或者网格行轴) 的元素之间及其周围的空间。 居中排列 */
+    justify-content: center;
+    /*align-items属性将所有直接子节点上的align-self值设置为一个组。居中排列 */
+    align-items: center;
+    /*相对于视窗口区域的高度。视口被均分为100单位的vh 高度100 */
+    height: 100vh;
+    /*背景颜色*/
+    background-color: #17171a;
 }
