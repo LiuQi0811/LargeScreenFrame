@@ -1,7 +1,14 @@
 import type {App} from 'vue'
-import {createRouter, createWebHashHistory} from 'vue-router'
+import {createRouter, createWebHashHistory, RouteRecordRaw} from 'vue-router'
 import {LoginRoute} from "@/router/base";
 
+const RootRoute:Array<RouteRecordRaw> = [
+    {
+        path:'/',
+        name: 'Root',
+        component: ()=>import('@/views/login/index.vue')
+    }
+]
 
 /**
  * 路由列表
@@ -21,6 +28,7 @@ const router = createRouter({
  * 设置路由
  */
 export function setupRouter(app: App) {
+    // 挂载使用 router
     app.use(router)
 }
 

@@ -1,21 +1,13 @@
 <template>
   <!--全局主题-->
   <n-config-provider
-      :theme="darkTheme"
-      :theme-overrides="themeOverrides">
+      :theme="darkTheme">
+    <router-view></router-view>
   </n-config-provider>
 </template>
 <script lang="ts" setup>
-import {NConfigProvider, GlobalThemeOverrides, darkTheme} from 'naive-ui' // Naive UI 框架引入
-const darkTheme = ()=>{
-  return darkTheme
-}
-const themeOverrides: GlobalThemeOverrides = {
-  common: {
-    primaryColor: '#FF0000'
-  },
-  Button: {
-    textColor: '#FF0000'
-  }
-}
+import {NConfigProvider} from 'naive-ui' // Naive UI 框架引入
+import {useDarkThemeHook} from '@/hooks'
+
+const darkTheme = useDarkThemeHook()
 </script>
