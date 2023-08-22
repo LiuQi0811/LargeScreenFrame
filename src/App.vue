@@ -1,4 +1,8 @@
 <template>
+  <div style="color: orange; font-size: 38px;
+  font-weight: bold; display: flex; justify-content: center;align-items: center;height: 100vh;">
+    App Main
+  </div>
   <!--全局主题-->
   <n-config-provider
       :theme="darkTheme">
