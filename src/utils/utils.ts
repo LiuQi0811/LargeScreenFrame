@@ -1,5 +1,4 @@
 
-
 /**
  * JSON反序列化，支持函数和 undefined
  * @param data 

@@ -7,6 +7,10 @@ import {JSONParse} from './utils'
  */
 export const getLocalStorage = (param: string) =>{
     // 获取localStore数据
-    const value = window.localStorage.getItem(param)
-    return value ? JSONParse(value) : value
+    const result = window.localStorage.getItem(param)
+    try{
+        return result ? JSONParse(result) : result
+    }catch(e){
+        return result
+    }
 }

@@ -6,7 +6,10 @@
  * 主题枚举
  */
 export enum ThemeEnum{
-
+    // 深色
+    DARK = 'dark',
+    // 明亮
+    LIGHT = 'light'
 }
 
 /**
