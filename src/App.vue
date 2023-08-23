@@ -8,12 +8,14 @@
   <n-config-provider
       :theme="darkTheme"
       :theme-overrides="overridesTheme">
-    <router-view></router-view>
+      <I18n/>
+    <router-view/>
   </n-config-provider>
 </template>
 <script lang="ts" setup>
 import {NConfigProvider} from 'naive-ui' // Naive UI 框架引入
 import {useDarkThemeHook,useThemeOverridesHook} from '@/hooks'
+import {I18n} from '@/components/I18n' // I18n国际化引入
 // 使用深色主题
 const darkTheme = useDarkThemeHook()
 // 主题配置
