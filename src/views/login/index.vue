@@ -7,9 +7,17 @@
         登录页面
       </aside>
     </div>
-<layout-header></layout-header>
+<!-- 头部 -->
+<layout-header>
+
+</layout-header>
+<!-- 底部 -->
+<div class="kuier-login-box-footer">
+  <layout-footer/>
+</div>
   </div>
 </template>
 <script lang="ts" setup>
 import {LayoutHeader} from '@/layout/components/LayoutHeader'
+import {LayoutFooter} from '@/layout/components/LayoutFooter'
 </script>
