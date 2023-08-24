@@ -1,7 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import {setupStore} from '@/store'
-import router, {setupRouter} from '@/router'
+import {setupRouter} from '@/router'
+
+import i18n from '@/i18n/index'
 
 /**
  * 初始化 app
@@ -13,7 +15,8 @@ async function initApp(){
    setupStore(app)
    // 挂载路由管理
    setupRouter(app)
-   await router.isReady()
+   // i18n 国际化语言挂载
+   app.use(i18n)
    // 挂载到页面
    app.mount('#app',true)
 
