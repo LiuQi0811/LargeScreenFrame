@@ -10,8 +10,9 @@
 <!-- 头部 -->
 <layout-header>
 </layout-header>
-<!-- 底部 -->
+<!-- 底部导航栏 -->
 <div class="kuier-login-box-footer">
+  <!--自定义底部布局组件-->
   <layout-footer/>
 </div>
   </div>
