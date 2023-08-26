@@ -1,10 +1,30 @@
 <template>
   <div class="kuier-footer">
     <slot>
-      底部布局页面
+      <!--间距组件-->
+      <n-space :size="50">
+        <n-text depth="2">
+          <n-a>
+            <!--$t，是vue-i18n国际化插件-->
+            {{$t('邮箱地址')}}:
+          </n-a>
+          <n-a italic :href="QQEmail" target="_blank">
+            {{QQEmail}}
+          </n-a>
+        </n-text>
+        <n-text depth="3">
+          <n-a italic href="https://github.com/LiuQi0811/LargeScreenFrame" target="_blank">
+            苏 ICP备20230811号-1
+          </n-a>
+        </n-text>
+      </n-space>
     </slot>
   </div>
 </template>
+
+<script lang="ts" setup>
+import {QQEmail} from '@/settings/pathSetting'
+</script>
 
 <style lang="scss" scoped>
 @include kuier(footer) {
