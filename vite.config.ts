@@ -28,6 +28,15 @@ export default defineConfig({
         ],
         dedupe: ['vue']
     },
+    // 全局css注册
+    css:{
+        preprocessorOptions:{
+            scss:{
+                javascriptEnabled: true,
+                additionalData: `@import "src/styles/common/style.scss";`
+            }
+        }
+    },
     plugins: [
         vue(),
         // gzip 压缩

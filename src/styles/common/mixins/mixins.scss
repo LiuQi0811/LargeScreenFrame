@@ -1,0 +1,8 @@
+@import './config.scss';
+
+@mixin kuier($block) {
+  $K: $namespace + '-' + $block;
+  .#{$K}{
+    @content;
+  }
+}
