@@ -2,8 +2,10 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import {setupStore} from '@/store'
 import {setupRouter} from '@/router'
-
+import {setupNaiveUI} from '@/plugins';
 import i18n from '@/i18n/index'
+
+
 
 /**
  * 初始化 app
@@ -11,6 +13,8 @@ import i18n from '@/i18n/index'
 async function initApp(){
     // 创建app 对象实例化
    const app = createApp(App)
+   // 注册全局常用的 naive-ui 组件
+   setupNaiveUI(app)
    // 挂载状态管理
    setupStore(app)
    // 挂载路由管理
