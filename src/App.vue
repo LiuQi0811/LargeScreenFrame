@@ -1,17 +1,12 @@
 <template>
-  <!-- 程序主入口样式展示 -->
-  <div style="color: orange; font-size: 38px;
-  font-weight: bold; display: flex; justify-content: center;align-items: center;height: 50vh;">
-    App Main
-  </div>
   <!--全局主题-->
   <n-config-provider
       :theme="darkTheme"
       :theme-overrides="overridesTheme">
-      <kui-er-app-provider>
-        <i18n/>
-        <router-view/>
-      </kui-er-app-provider>
+    <kui-er-app-provider>
+      <i18n/>
+      <router-view/>
+    </kui-er-app-provider>
   </n-config-provider>
 </template>
 <script lang="ts" setup>

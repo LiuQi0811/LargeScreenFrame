@@ -1,6 +1,7 @@
 <template>
   <n-loading-bar-provider>
     <n-dialog-provider>
+      <dialog-content/>
       <n-notification-provider>
        <n-message-provider>
          FG
@@ -16,4 +17,5 @@ import {
   NDialogProvider,
   NNotificationProvider
 } from 'naive-ui'
+import { DialogContent } from '@/components/Plugins/DialogContent'
 </script>

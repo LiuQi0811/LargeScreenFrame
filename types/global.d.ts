@@ -4,5 +4,6 @@
 
 interface Window{
     // 语言
-    $t: any
+    $t: any,
+    $dialog: any
 }

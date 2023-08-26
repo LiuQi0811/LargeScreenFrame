@@ -4,6 +4,8 @@ import {setupStore} from '@/store'
 import {setupRouter} from '@/router'
 import {setupNaiveUI} from '@/plugins';
 import i18n from '@/i18n/index'
+// 引入全局样式
+import '@/styles/pages/index.scss'
 
 
 
