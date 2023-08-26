@@ -1,5 +1,5 @@
 <template>
-  <strong style="color: white;font-size: 30px">登录页面</strong>
+  <strong style="color: white;font-size: 30px">KuiErAppProvider</strong>
   <!--加载条组件-->
   <n-loading-bar-provider>
     <!--对话框组件-->

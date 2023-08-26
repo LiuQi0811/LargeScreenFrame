@@ -1,0 +1,6 @@
+@import '../common.scss';
+
+/*亮白主题样式配置*/
+$light:(
+        background-image: linear-gradient(120deg, $--color-light-bg 0%, $--color-light-bg 100%),
+)

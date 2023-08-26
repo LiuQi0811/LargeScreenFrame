@@ -1,8 +1,24 @@
 @import './config.scss';
-
+@import '../theme/theme.scss';
 @mixin kuier($block) {
   $K: $namespace + '-' + $block;
-  .#{$K}{
+  .#{$K} {
     @content;
+  }
+}
+
+/*获取背景渐变颜色*/
+@mixin background-image($param) {
+  @include themeify {
+    background-image: themed($param);
+  }
+}
+
+@mixin themeify {
+  @each $theme-name, $theme-map in $themes {
+    $theme-map: $theme-map !global;
+    [data-theme='#{$theme-name}'] & {
+      @content;
+    }
   }
 }
