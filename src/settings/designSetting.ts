@@ -18,3 +18,7 @@ export const theme = {
  * 全局边框圆角
  */
 export const borderRadius = '4px'
+/**
+ * 轮播间隔时间
+ */
+export const carouselInterval = 4000
