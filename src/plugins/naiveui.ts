@@ -13,7 +13,8 @@ import {
     NCard,
     NForm,
     NFormItem,
-    NInput
+    NInput,
+    NCheckbox
 } from 'naive-ui'
 /*创建naiveUI实例*/
 const naiveUI = create({
@@ -31,7 +32,8 @@ const naiveUI = create({
         NCard,
         NForm,
         NFormItem,
-        NInput
+        NInput,
+        NCheckbox
     ]
 })
 

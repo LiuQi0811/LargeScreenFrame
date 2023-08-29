@@ -53,6 +53,30 @@
                   <n-input type="password" placeholder="请输入密码">
                   </n-input>
                 </n-form-item>
+                <!--自动登录 Form子表单-->
+                <n-form-item>
+                  <div>
+                    <div>
+                    <!--复选框 Checkbox
+                     -->
+                      <n-checkbox>
+                        自动登录
+                      </n-checkbox>
+                    </div>
+                  </div>
+                </n-form-item>
+                <!--登录提交按钮 Form子表单-->
+                <n-form-item>
+                <!--
+                block 按钮是否显示为块级
+                loading 按钮是否显示加载状态
+                type 按钮的类型
+                size 按钮的尺寸
+                -->
+                  <n-button type="primary" size="large" :loading="false" block>
+                    登录
+                  </n-button>
+                </n-form-item>
               </n-form>
             </n-card>
           </n-collapse-transition>
@@ -85,7 +109,8 @@ const  getImagePath = (name: string,path:string) => {
 * {
   box-sizing: border-box;
 }
-
+// 登录表单 容器宽度
+$container-width: 450px;
 // 登录框架 vh 屏幕窗体占比高度
 $kuier-login-height: 100vh;
 // 轮播图宽度
@@ -130,7 +155,15 @@ $carousel-image-height: 60vh;
         // 轮播图图片高度 根据窗体适应
         height: $carousel-image-height;
       }
-
+    }
+    // 登录账户模块
+    .login-account{
+      display: flex;
+      flex-direction: column;
+      margin: 0 160px;
+      &-container{
+        width: $container-width;
+      }
     }
   }
 }
