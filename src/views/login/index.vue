@@ -2,9 +2,23 @@
   <!-- 登录相关 -->
   <div class="kuier-login-box">
     <div class="kuier-login-box-bg">
+      <!-- aside是Vue.js框架中的一个组件，用于创建一个可以从屏幕旁边滑出的侧边栏-->
       <aside class="bg-slot"></aside>
       <aside class="bg-img-box">
-        <strong style="font-size: 55px;">登录页面</strong>
+        <!--<TransitionGroup> 是一个内置组件，用于对 v-for 列表中的元素或组件的插入、移除和顺序改变添加动画效果-->
+        <transition-group>
+          <template v-for="(item,index) in echartsImageList" :key="index">
+            <div class="bg-img-box-li">
+              <!--折叠渐变 Collapse Transition
+              appear 是否在首次出现时播放动画
+               show  是否展示内容
+              -->
+              <n-collapse-transition :appear="true" :show="showImage">
+                <img :src="getImagePath(item,'chart/charts')"/>
+              </n-collapse-transition>
+            </div>
+          </template>
+        </transition-group>
       </aside>
     </div>
     <!-- 头部 -->
@@ -44,8 +58,10 @@
               </div>
               <!--登录账户 Form表单-->
               <n-form>
-                <!-- 支付测试 Form子表单-->
-                <n-form-item>
+                <!-- 支付测试 Form子表单
+                v-show="false" 不展示表单
+                -->
+                <n-form-item v-show="true">
                   <n-input type="text" placeholder="请输入支付码" v-model:value="paymentData.auth_code">
                   </n-input>
                   <n-input type="text" placeholder="请输入付款金额" v-model:value="paymentData.total_amount">
@@ -106,10 +122,35 @@ import {LayoutHeader} from '@/layout/components/LayoutHeader'
 import {LayoutFooter} from '@/layout/components/LayoutFooter'
 import {carouselInterval} from '@/settings/designSetting'
 import {get, post} from '@/utils/http'
-import {onMounted, reactive} from 'vue'
+import {onMounted,ref, reactive} from 'vue'
+
+// 轮播图 图片列表
+const carouselImageList = ['first', 'second', 'third','fourth','fifth','sixth','seventh']
+// echarts图 图片列表
+const  echartsImageList = ['bar_x','bar_y']
+const showImage = ref(true)
+/*获取文件路径*/
+const getImagePath = (name: string, path: string) => {
+  return new URL(`../../assets/images/${path}/${name}.png`, import.meta.url).href
+}
 
 
-const carouselImageList = ['first', 'second', 'third']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------------订单支付相关-------------------------------*/
 
 // 商户交易流水号
 let outTradeNo = ""
@@ -184,11 +225,6 @@ const refund = (e: Event) => {
     console.log(response)
   })
 }
-
-/*获取文件路径*/
-const getImagePath = (name: string, path: string) => {
-  return new URL(`../../assets/images/${path}/${name}.png`, import.meta.url).href
-}
 </script>
 
 <style lang="scss" scoped>
@@ -219,6 +255,37 @@ $carousel-image-height: 60vh;
   &-divider {
     margin: 0;
     padding-top: 0;
+  }
+  // BG 模块
+  &-bg{
+    z-index: 0;
+    // 固定定位
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: url('@/assets/images/login/login-bg.png') no-repeat 0 -120px;
+    .bg-slot{
+      width: $carousel-width;
+    }
+    .bg-img-box{
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      width: 770px;
+      margin-right: -20px;
+      &-li{
+        img{
+          margin-right: 20px;
+          margin-top: 20px;
+          width: 230px;
+          border-radius: 2 * $--border-radius;
+          opacity: 0.9;
+        }
+      }
+    }
   }
   // 登录主体模块
   @include kuier(login) {
