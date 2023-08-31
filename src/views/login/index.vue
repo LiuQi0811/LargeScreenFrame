@@ -122,32 +122,44 @@ import {LayoutHeader} from '@/layout/components/LayoutHeader'
 import {LayoutFooter} from '@/layout/components/LayoutFooter'
 import {carouselInterval} from '@/settings/designSetting'
 import {get, post} from '@/utils/http'
-import {onMounted,ref, reactive} from 'vue'
+import {onMounted, ref, reactive} from 'vue'
+import {shuffle} from "lodash";
 
 // 轮播图 图片列表
-const carouselImageList = ['first', 'second', 'third','fourth','fifth','sixth','seventh']
+const carouselImageList = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh']
 // echarts图 图片列表
-const  echartsImageList = ['bar_x','bar_y']
+const echartsImageList = ref([
+  'bar_x',
+  'bar_y',
+  'line_gradient',
+  'line',
+  'funnel',
+  'heatmap',
+  'map',
+  'pie',
+  'radar'
+])
+// 展示图片
 const showImage = ref(true)
+// 定时器
+const timer = ref()
 /*获取文件路径*/
 const getImagePath = (name: string, path: string) => {
   return new URL(`../../assets/images/${path}/${name}.png`, import.meta.url).href
 }
 
+// 随机切换
+const shuffleHandle = () => {
+  timer.value = setInterval(()=>{
+      // 指定时间执行任务
+    // 指定时间定时更换背景图片
+    echartsImageList.value = shuffle(echartsImageList.value)
+  },carouselInterval)
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+onMounted(() => {
+  shuffleHandle()
+})
 
 
 /*-----------------------订单支付相关-------------------------------*/
@@ -171,7 +183,7 @@ const paymentData = reactive({
   busi_mode: "",
   subject: "逆水寒服装订单",
   pay_order_no: "",
-  notify_url: "",
+  notify_url: "192.168.2.39:9091",
   settle_type: "",
   remark: "",
   scan_type: "",
@@ -187,7 +199,7 @@ const result = get(`/pos/api/userInfoByShopId?shopId=${82173465}`).then((respons
 /*支付方法*/
 const payment = (e: Event) => {
   // 调取被扫支付接口
-  post(`/api/lkl/transMicropay`,paymentData).then((response) => {
+  post(`/api/lkl/transMicropay`, paymentData).then((response) => {
     console.log(response)
     const result = response.data.resp_data
     outTradeNo = result.out_trade_no
@@ -221,7 +233,7 @@ const refund = (e: Event) => {
   refundData.origin_trade_no = originTradeNo
   refundData.refund_amount = refundAmount
   // 调取被扫支付接口
-  post(`/api/lkl/relationRefund`,refundData).then((response) => {
+  post(`/api/lkl/relationRefund`, refundData).then((response) => {
     console.log(response)
   })
 }
@@ -257,7 +269,7 @@ $carousel-image-height: 60vh;
     padding-top: 0;
   }
   // BG 模块
-  &-bg{
+  &-bg {
     z-index: 0;
     // 固定定位
     position: fixed;
@@ -267,17 +279,20 @@ $carousel-image-height: 60vh;
     width: 100vw;
     height: 100vh;
     background: url('@/assets/images/login/login-bg.png') no-repeat 0 -120px;
-    .bg-slot{
+
+    .bg-slot {
       width: $carousel-width;
     }
-    .bg-img-box{
+
+    .bg-img-box {
       position: relative;
       display: flex;
       flex-wrap: wrap;
       width: 770px;
       margin-right: -20px;
-      &-li{
-        img{
+
+      &-li {
+        img {
           margin-right: 20px;
           margin-top: 20px;
           width: 230px;
